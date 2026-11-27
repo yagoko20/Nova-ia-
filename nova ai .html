@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050816">
+<title>NOVA AI — Your digital world, powered by AI</title>
+<style>
+:root{--bg:#050816;--panel:#0d1227;--panel2:#111936;--line:#242b55;--white:#f7f8ff;--muted:#b9c1dc;--purple:#8b3dff;--blue:#287bff;--cyan:#23c8ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 10%,#151044 0,transparent 32%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}.wrap{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(5,8,22,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(115,105,220,.18)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:25px;letter-spacing:-1px}.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--blue));display:grid;place-items:center;font-weight:900;font-size:23px;box-shadow:0 0 25px #693bff55}.brand span:last-child{color:#a87bff}
+nav{display:flex;gap:28px;color:#e2e5f5;font-size:14px}nav a:hover,.textlink:hover{color:#b99aff}
+.btn{border:0;border-radius:999px;padding:13px 21px;background:linear-gradient(110deg,var(--purple),var(--blue));color:white;font-weight:750;cursor:pointer;box-shadow:0 8px 28px #6338ff38;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn.secondary{background:#111936;border:1px solid #343b70;box-shadow:none}.btn.small{padding:10px 15px;font-size:13px}
+.menu{display:none;background:transparent;color:white;border:1px solid var(--line);border-radius:10px;padding:8px 11px;font-size:20px}
+.hero{padding:78px 0 48px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:30px;min-height:550px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid #4930a1;background:#151033;border-radius:999px;color:#d5c7ff;font-size:13px}
+h1{font-size:clamp(42px,6vw,70px);line-height:1.03;letter-spacing:-3px;margin:22px 0 18px;max-width:700px}h1 .gradient,.grad{background:linear-gradient(100deg,#a24bff,#3d9cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:17px;color:var(--muted);max-width:620px}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:27px}
+.visual{height:400px;position:relative;display:grid;place-items:center;overflow:hidden}.orb{position:absolute;width:310px;height:310px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#6e42ff,#1d2b89 40%,#090d25 72%);filter:drop-shadow(0 0 65px #653dff77);opacity:.8}.ring{position:absolute;width:420px;height:130px;border:3px solid #573bff;border-radius:50%;transform:rotate(-18deg);box-shadow:0 0 24px #4c6bff}.ring.two{width:360px;height:110px;transform:rotate(28deg);border-color:#16bfff;opacity:.7}
+.ai-core{position:relative;width:205px;height:245px;border-radius:48% 48% 42% 42%;background:linear-gradient(145deg,#d7dcff,#626fbd 30%,#151c48 70%);box-shadow:inset -18px -15px 35px #080d2d, inset 12px 10px 22px #fff8,0 0 45px #6d57ff66;clip-path:polygon(18% 0,82% 0,100% 25%,91% 78%,70% 100%,30% 100%,9% 78%,0 25%)}
+.ai-core:before{content:"";position:absolute;left:18%;right:18%;top:33%;height:35px;border-radius:50px;background:linear-gradient(90deg,#1b2365,#05091b);box-shadow:0 0 18px #8a58ff}.ai-core:after{content:"";position:absolute;left:32%;right:32%;top:45%;height:5px;border-radius:9px;background:#a98cff;box-shadow:0 0 18px #9a63ff}
+.visual-label{position:absolute;bottom:20px;right:4%;color:#c7c9ff;font-size:12px;letter-spacing:2px}
+.section{padding:55px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}.section h2{font-size:clamp(28px,4vw,39px);letter-spacing:-1.4px;margin:0}.sub{color:var(--muted);margin:8px 0 0}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:linear-gradient(150deg,#111832,#090e20);border:1px solid var(--line);border-radius:20px;padding:22px;min-height:170px;transition:.2s}.card:hover{transform:translateY(-4px);border-color:#6950d7;box-shadow:0 15px 35px #0005}.ico{width:43px;height:43px;border-radius:13px;background:#25164a;color:#ad7aff;display:grid;place-items:center;font-size:22px;margin-bottom:14px}.card h3{margin:0 0 5px;font-size:18px}.card p{margin:0;color:var(--muted);font-size:14px}
+.tool-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}.toolbox{background:linear-gradient(145deg,#101832,#090e20);border:1px solid var(--line);border-radius:20px;padding:24px}.toolbox label{display:block;font-size:13px;color:#d6d9ed;margin:14px 0 7px}.field,textarea,select{width:100%;background:#070c1d;border:1px solid #30385f;border-radius:12px;padding:12px 13px;color:white;font:inherit;outline:none}.field:focus,textarea:focus{border-color:#9364ff}textarea{min-height:100px;resize:vertical}.output{background:#080d20;border:1px dashed #454b7d;border-radius:12px;padding:14px;color:#dbe0ff;min-height:90px;margin-top:13px;white-space:pre-wrap}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.product{background:linear-gradient(145deg,#111832,#090e20);border:1px solid var(--line);border-radius:18px;padding:20px}.product .cover{height:115px;border-radius:13px;background:radial-gradient(circle at 70% 20%,#4f3ac1,#17133c 45%,#080d20);display:grid;place-items:center;font-size:37px;margin-bottom:16px}.price{font-weight:800;font-size:22px;margin:12px 0}.tag{display:inline-block;color:#cbb4ff;background:#241743;padding:4px 9px;border-radius:99px;font-size:11px}
+.notice{border:1px solid #51438b;background:#151033;color:#d9d1ff;border-radius:14px;padding:14px 16px;font-size:13px;margin-top:18px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:#aeb6d4;font-size:13px;margin-top:35px}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.mobile-only{display:none}
+@media(max-width:850px){nav{gap:14px}.hero{grid-template-columns:1fr;padding-top:55px}.visual{height:300px;grid-row:1}.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav{height:66px}.brand{font-size:21px}.nav>.btn{display:none}.menu{display:block}nav{display:none;position:absolute;top:66px;left:0;right:0;background:#080d20;padding:18px 5%;border-bottom:1px solid var(--line);flex-direction:column}nav.open{display:flex}.hero{padding-top:32px;gap:8px;min-height:auto}.visual{height:245px}.orb{width:205px;height:205px}.ring{width:290px;height:90px}.ring.two{width:250px;height:75px}.ai-core{width:145px;height:180px}h1{font-size:43px;letter-spacing:-2px}.lead{font-size:15px}.section{padding:38px 0}.cards{gap:10px}.card{padding:16px;min-height:155px}.card h3{font-size:16px}.card p{font-size:12px}.tool-layout,.products{grid-template-columns:1fr}.section-head{display:block}.section-head .btn{margin-top:14px}.foot{display:block}.foot div+div{margin-top:8px}}
+
+/* Language and privacy panels */
+.lang-switch{display:flex;align-items:center;gap:6px;background:#111936;border:1px solid #343b70;color:#fff;border-radius:999px;padding:8px 11px;font:inherit;font-size:12px;cursor:pointer}
+.overlay{position:fixed;inset:0;z-index:100;background:rgba(2,4,15,.78);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:18px}
+.overlay.show{display:flex}
+.dialog{width:min(520px,100%);background:linear-gradient(145deg,#141b38,#090e20);border:1px solid #494078;border-radius:22px;padding:26px;box-shadow:0 25px 90px #0009}
+.dialog h2{margin:0 0 8px;font-size:25px}.dialog p{color:var(--muted);margin:8px 0 18px}
+.dialog-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.dialog-actions .btn{flex:1;min-width:130px}
+.lang-choice{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.lang-choice button{padding:16px;border:1px solid #414875;border-radius:14px;background:#0a1025;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+.lang-choice button:hover{border-color:#9b70ff;background:#17133a}
+.cookie-banner{position:fixed;z-index:90;left:18px;right:18px;bottom:18px;max-width:760px;margin:auto;background:#111832;border:1px solid #51438b;border-radius:18px;padding:20px;box-shadow:0 18px 60px #0009;display:none}
+.cookie-banner.show{display:block}.cookie-banner h3{margin:0 0 6px}.cookie-banner p{color:var(--muted);font-size:13px;margin:0}
+.cookie-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.cookie-actions .btn{padding:10px 15px;font-size:13px}
+@media(max-width:600px){.lang-switch{padding:7px 9px}.cookie-banner{left:10px;right:10px;bottom:10px;padding:16px}.dialog{padding:21px}}
+</style>
+</head>
+<body>\n
+<div class="overlay" id="languageDialog" role="dialog" aria-modal="true" aria-labelledby="languageTitle">
+ <div class="dialog">
+  <h2 id="languageTitle">Choose your language</h2>
+  <p id="languageIntro">Select the language you want to use on NOVA AI.</p>
+  <div class="lang-choice">
+   <button type="button" data-language="fr">🇫🇷 Français</button>
+   <button type="button" data-language="en">🇬🇧 English</button>
+  </div>
+ </div>
+</div>
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie preferences">
+ <h3 data-i18n="cookieTitle">🍪 Votre confidentialité</h3>
+ <p data-i18n="cookieText">NOVA AI n'utilise actuellement aucun cookie publicitaire ou de mesure d'audience. Nous mémorisons seulement votre langue et votre choix de confidentialité sur votre appareil.</p>
+ <div class="cookie-actions">
+  <button class="btn" id="acceptCookies" type="button" data-i18n="acceptCookies">Tout accepter</button>
+  <button class="btn secondary" id="rejectCookies" type="button" data-i18n="rejectCookies">Tout refuser</button>
+  <button class="btn secondary" id="cookieDetails" type="button" data-i18n="cookieDetails">Personnaliser</button>
+ </div>
+</div>
+
+<header>
+ <div class="wrap nav">
+  <a class="brand" href="#home"><span class="mark">N</span><span>NOVA <span>AI</span></span></a>
+  <nav id="nav">
+   <a href="#home">Accueil</a><a href="#tools">Outils IA</a><a href="#store">Boutique</a><a href="#premium">Premium</a><a href="#contact">Contact</a>
+  </nav>
+  <button class="lang-switch" id="languageToggle" type="button" aria-label="Change language">FR / EN</button>\n  <a class="btn small" href="#tools" data-i18n="start">Commencer →</a>
+  <button class="menu" id="menu" aria-label="Ouvrir le menu">☰</button>
+ </div>
+</header>
+<main>
+<section class="wrap hero" id="home">
+ <div>
+  <div class="eyebrow">✦ Innovation · Performance · Simplicité</div>
+  <h1>Transform Your Business with an <span class="gradient">AI-Powered Solution</span></h1>
+  <p class="lead">Découvrez NOVA AI, votre espace numérique pour trouver des idées, créer plus facilement et gagner du temps grâce à des outils intelligents.</p>
+  <div class="actions"><a class="btn" href="#tools">Explorer maintenant →</a><a class="btn secondary" href="#features">Découvrir NOVA AI</a></div>
+ </div>
+ <div class="visual" aria-label="Illustration abstraite futuriste">
+  <div class="orb"></div><div class="ring"></div><div class="ring two"></div><div class="ai-core"></div>
+  <div class="visual-label">NOVA INTELLIGENCE</div>
+ </div>
+</section>
+<section class="wrap section" id="features">
+ <div class="section-head"><div><h2>Everything you need, <span class="grad">in one place.</span></h2><p class="sub">Des ressources numériques simples pour avancer dans tes projets.</p></div></div>
+ <div class="cards">
+  <article class="card"><div class="ico">✧</div><h3>AI Tools</h3><p>Des outils pratiques pour trouver des idées et structurer tes projets.</p></article>
+  <article class="card"><div class="ico">▣</div><h3>Digital Store</h3><p>Des modèles, guides et ressources numériques à consulter.</p></article>
+  <article class="card"><div class="ico">➤</div><h3>Productivity</h3><p>Organise ton travail et transforme tes idées en actions.</p></article>
+  <article class="card"><div class="ico">⌘</div><h3>Learning</h3><p>Découvre des méthodes et développe de nouvelles compétences.</p></article>
+ </div>
+</section>
+<section class="wrap section" id="tools">
+ <div class="section-head"><div><h2>Try our <span class="grad">free tools.</span></h2><p class="sub">Un premier outil de démonstration, utilisable sans compte ni paiement.</p></div><span class="tag">BÊTA · GRATUIT</span></div>
+ <div class="tool-layout">
+  <div class="toolbox">
+   <h3>Générateur d'idées</h3><p class="sub">Choisis un thème et obtiens une piste pour commencer.</p>
+   <label for="topic">Ton domaine</label>
+   <select id="topic" class="field"><option>Création de contenu</option><option>Études et apprentissage</option><option>Petite entreprise</option><option>Organisation personnelle</option><option>Sport et loisirs</option></select>
+   <button class="btn" id="generate" style="margin-top:14px">Générer une idée ✦</button>
+  </div>
+  <div class="toolbox"><h3>Ton idée apparaît ici</h3><p class="sub">Cette démo fonctionne localement. Elle n'utilise pas encore un véritable modèle d'IA.</p><div class="output" id="result" aria-live="polite">Choisis un domaine puis appuie sur « Générer une idée ».</div></div>
+ </div>
+ <div class="notice">Prototype : le générateur actuel est une démonstration à règles prédéfinies, pas encore une IA connectée. Une véritable IA nécessitera une intégration technique et pourra entraîner des coûts.</div>
+</section>
+<section class="wrap section" id="store">
+ <div class="section-head"><div><h2>Digital <span class="grad">store.</span></h2><p class="sub">Exemples de ressources que NOVA AI pourrait proposer.</p></div></div>
+ <div class="products">
+  <article class="product"><div class="cover">▤</div><span class="tag">MODÈLE</span><h3>Organisateur de projet</h3><p class="sub">Un modèle pour planifier les étapes d'une idée.</p><div class="price">À définir</div><button class="btn secondary small" disabled>Disponible bientôt</button></article>
+  <article class="product"><div class="cover">✦</div><span class="tag">GUIDE</span><h3>Kit de prompts créatifs</h3><p class="sub">Des exemples de consignes pour mieux utiliser les assistants IA.</p><div class="price">À définir</div><button class="btn secondary small" disabled>Disponible bientôt</button></article>
+  <article class="product"><div class="cover">▦</div><span class="tag">PACK</span><h3>Pack productivité</h3><p class="sub">Des fiches simples pour organiser ses tâches.</p><div class="price">À définir</div><button class="btn secondary small" disabled>Disponible bientôt</button></article>
+ </div>
+ <div class="notice">La boutique est une maquette : aucun paiement ni achat n'est activé. Les produits, prix, conditions de vente et moyens de paiement devront être préparés avant toute commercialisation, avec l'aide d'un parent.</div>
+</section>
+<section class="wrap section" id="premium">
+ <div class="toolbox" style="text-align:center;padding:34px 24px">
+  <span class="tag">NOVA PLUS · À VENIR</span><h2 style="margin:12px 0">More possibilities. <span class="grad">One NOVA.</span></h2>
+  <p class="sub" style="max-width:650px;margin:0 auto 20px">Des outils supplémentaires et des ressources avancées pourront être proposés plus tard. Nous commencerons par vérifier que les outils gratuits sont vraiment utiles.</p>
+  <a class="btn secondary" href="#contact">Suivre le lancement</a>
+ </div>
+</section>
+<section class="wrap section" id="contact">
+ <div class="section-head"><div><h2>Stay in <span class="grad">touch.</span></h2><p class="sub">Une question ou une suggestion pour NOVA AI ?</p></div></div>
+ <div class="toolbox"><p class="sub">L'espace contact sera activé lorsque l'adresse officielle du projet sera créée. En attendant, note les retours des premiers testeurs directement.</p><a class="btn" href="#home">Retour en haut ↑</a></div>
+</section>
+</main>
+<footer><div class="wrap foot"><div><strong>NOVA AI</strong> · Your digital world, powered by AI.</div><div>Prototype de démonstration · © NOVA AI</div></div></footer>
+
+<script>
+const menu=document.getElementById('menu'),nav=document.getElementById('nav');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+const ideasFR={
+"Création de contenu":["Prépare une série de 5 publications autour d'une question fréquente de ton audience, puis demande à 3 personnes laquelle leur est la plus utile.","Transforme un conseil que tu connais bien en mini-guide illustré d'une page.","Crée un calendrier de contenu sur une semaine avec un thème différent chaque jour."],
+"Études et apprentissage":["Crée une fiche de révision qui explique une notion avec un exemple concret et trois questions d'entraînement.","Transforme un chapitre en cartes de mémorisation question-réponse.","Explique une notion difficile en 60 secondes avec un schéma et un exemple."],
+"Petite entreprise":["Repère une question que les clients posent souvent et crée une page qui y répond clairement.","Prépare un modèle de devis ou de suivi client simple, puis fais-le tester par un commerçant.","Crée une FAQ courte pour aider les visiteurs à comprendre une offre."],
+"Organisation personnelle":["Fais une liste de trois priorités pour la semaine et découpe chacune en petites étapes.","Crée une routine de préparation de 10 minutes pour démarrer une tâche importante.","Regroupe tes tâches par contexte : téléphone, ordinateur, maison ou extérieur."],
+"Sport et loisirs":["Crée un carnet pour suivre les séances, les objectifs et les sensations, sans comparer les personnes entre elles.","Prépare un guide débutant qui explique le vocabulaire essentiel d'une activité.","Construis un calendrier d'entraînement ou de pratique avec des jours de récupération."]
+};
+const ideasEN={
+"Création de contenu":["Plan a series of five posts around a question your audience often asks, then ask three people which one is most useful.","Turn a tip you know well into a one-page illustrated mini-guide.","Create a one-week content calendar with a different theme for each day."],
+"Études et apprentissage":["Create a revision sheet explaining one topic with a practical example and three practice questions.","Turn a chapter into question-and-answer flashcards.","Explain a difficult concept in 60 seconds using a diagram and an example."],
+"Petite entreprise":["Find a question customers often ask and create a page that answers it clearly.","Prepare a simple quote or customer-tracking template and ask a small business owner to test it.","Create a short FAQ to help visitors understand an offer."],
+"Organisation personnelle":["List three priorities for the week and break each one into small steps.","Create a 10-minute preparation routine to help you start an important task.","Group your tasks by context: phone, computer, home or outdoors."],
+"Sport et loisirs":["Create a journal to track sessions, goals and how you feel, without comparing people.","Prepare a beginner's guide explaining the essential vocabulary of an activity.","Build a practice calendar that includes recovery days."]
+};
+
+const translations={
+fr:{
+ nav:["Accueil","Outils IA","Boutique","Premium","Contact"],
+ start:"Commencer →",eyebrow:"✦ Innovation · Performance · Simplicité",
+ heroTitle:'Transformez vos projets avec une <span class="gradient">solution propulsée par l’IA</span>',
+ heroLead:"Découvrez NOVA AI, votre espace numérique pour trouver des idées, créer plus facilement et gagner du temps grâce à des outils intelligents.",
+ explore:"Explorer maintenant →",discover:"Découvrir NOVA AI",
+ featuresTitle:'Tout ce dont vous avez besoin, <span class="grad">au même endroit.</span>',
+ featuresSub:"Des ressources numériques simples pour avancer dans vos projets.",
+ featureTitles:["Outils IA","Boutique numérique","Productivité","Apprentissage"],
+ featureTexts:["Des outils pratiques pour trouver des idées et structurer vos projets.","Des modèles, guides et ressources numériques à consulter.","Organisez votre travail et transformez vos idées en actions.","Découvrez des méthodes et développez de nouvelles compétences."],
+ toolsTitle:'Essayez nos <span class="grad">outils gratuits.</span>',toolsSub:"Un premier outil de démonstration, utilisable sans compte ni paiement.",beta:"BÊTA · GRATUIT",
+ ideaTitle:"Générateur d'idées",ideaSub:"Choisissez un thème et obtenez une piste pour commencer.",topicLabel:"Votre domaine",
+ topics:["Création de contenu","Études et apprentissage","Petite entreprise","Organisation personnelle","Sport et loisirs"],
+ generate:"Générer une idée ✦",resultTitle:"Votre idée apparaît ici",resultSub:"Cette démo fonctionne localement. Elle n'utilise pas encore un véritable modèle d'IA.",resultDefault:"Choisissez un domaine puis appuyez sur « Générer une idée ».",
+ demoNotice:"Prototype : le générateur actuel est une démonstration à règles prédéfinies, pas encore une IA connectée. Une véritable IA nécessitera une intégration technique et pourra entraîner des coûts.",
+ storeTitle:'Boutique <span class="grad">numérique.</span>',storeSub:"Exemples de ressources que NOVA AI pourrait proposer.",
+ productTags:["MODÈLE","GUIDE","PACK"],productTitles:["Organisateur de projet","Kit de prompts créatifs","Pack productivité"],productTexts:["Un modèle pour planifier les étapes d'une idée.","Des exemples de consignes pour mieux utiliser les assistants IA.","Des fiches simples pour organiser ses tâches."],price:"À définir",soon:"Disponible bientôt",
+ storeNotice:"La boutique est une maquette : aucun paiement ni achat n'est activé. Les produits, prix, conditions de vente et moyens de paiement devront être préparés avant toute commercialisation, avec l'aide d'un parent.",
+ premiumTag:"NOVA PLUS · À VENIR",premiumTitle:'Plus de possibilités. <span class="grad">Une seule NOVA.</span>',premiumText:"Des outils supplémentaires et des ressources avancées pourront être proposés plus tard. Nous commencerons par vérifier que les outils gratuits sont vraiment utiles.",follow:"Suivre le lancement",
+ contactTitle:'Restons en <span class="grad">contact.</span>',contactSub:"Une question ou une suggestion pour NOVA AI ?",contactText:"L'espace contact sera activé lorsque l'adresse officielle du projet sera créée. En attendant, notez les retours des premiers testeurs directement.",backTop:"Retour en haut ↑",
+ footerLine:"Votre univers numérique, propulsé par l'IA.",footerNote:"Prototype de démonstration · © NOVA AI",
+ cookieTitle:"🍪 Votre confidentialité",cookieText:"NOVA AI n'utilise actuellement aucun cookie publicitaire ou de mesure d'audience. Nous mémorisons seulement votre langue et votre choix de confidentialité sur votre appareil.",acceptCookies:"Tout accepter",rejectCookies:"Tout refuser",cookieDetails:"Personnaliser",
+ cookieDetailMessage:"Pour le moment, aucun cookie publicitaire ou analytique n'est installé. Seules vos préférences de langue et de confidentialité sont mémorisées sur votre appareil. Vous pouvez choisir « Tout refuser » : le site continuera de fonctionner.",
+ langTitle:"Choisissez votre langue",langIntro:"Sélectionnez la langue que vous souhaitez utiliser sur NOVA AI."
+},
+en:{
+ nav:["Home","AI Tools","Store","Premium","Contact"],
+ start:"Get started →",eyebrow:"✦ Innovation · Performance · Simplicity",
+ heroTitle:'Transform your projects with an <span class="gradient">AI-powered solution</span>',
+ heroLead:"Discover NOVA AI, your digital space to find ideas, create more easily and save time with smart tools.",
+ explore:"Explore now →",discover:"Discover NOVA AI",
+ featuresTitle:'Everything you need, <span class="grad">in one place.</span>',
+ featuresSub:"Simple digital resources to help move your projects forward.",
+ featureTitles:["AI Tools","Digital Store","Productivity","Learning"],
+ featureTexts:["Practical tools to find ideas and structure your projects.","Templates, guides and digital resources to explore.","Organize your work and turn ideas into action.","Discover methods and develop new skills."],
+ toolsTitle:'Try our <span class="grad">free tools.</span>',toolsSub:"A first demo tool, available without an account or payment.",beta:"BETA · FREE",
+ ideaTitle:"Idea generator",ideaSub:"Choose a topic and get a starting point.",topicLabel:"Your topic",
+ topics:["Content creation","Study and learning","Small business","Personal organization","Sports and hobbies"],
+ generate:"Generate an idea ✦",resultTitle:"Your idea will appear here",resultSub:"This demo runs locally. It is not connected to a real AI model yet.",resultDefault:"Choose a topic, then click “Generate an idea”.",
+ demoNotice:"Prototype: this generator uses predefined rules; it is not connected to AI yet. A real AI will require a technical integration and may involve costs.",
+ storeTitle:'Digital <span class="grad">store.</span>',storeSub:"Examples of resources NOVA AI could offer.",
+ productTags:["TEMPLATE","GUIDE","BUNDLE"],productTitles:["Project planner","Creative prompt kit","Productivity pack"],productTexts:["A template to plan the steps of an idea.","Example prompts to help you use AI assistants more effectively.","Simple worksheets to organize your tasks."],price:"To be decided",soon:"Coming soon",
+ storeNotice:"The store is a mock-up: no payment or purchase is enabled. Products, prices, sales terms and payment methods must be prepared before anything is sold, with help from a parent or guardian.",
+ premiumTag:"NOVA PLUS · COMING SOON",premiumTitle:'More possibilities. <span class="grad">One NOVA.</span>',premiumText:"Additional tools and advanced resources may be offered later. First, we will check that the free tools are genuinely useful.",follow:"Follow the launch",
+ contactTitle:'Stay in <span class="grad">touch.</span>',contactSub:"A question or suggestion for NOVA AI?",contactText:"The contact area will be activated once an official project email address has been created. For now, collect feedback directly from early testers.",backTop:"Back to top ↑",
+ footerLine:"Your digital world, powered by AI.",footerNote:"Demo prototype · © NOVA AI",
+ cookieTitle:"🍪 Your privacy",cookieText:"NOVA AI does not currently use advertising or analytics cookies. We only save your language and privacy choice on your device.",acceptCookies:"Accept all",rejectCookies:"Reject all",cookieDetails:"Customize",
+ cookieDetailMessage:"No advertising or analytics cookies are currently installed. Only your language and privacy preferences are saved on your device. You can choose “Reject all” and the site will keep working.",
+ langTitle:"Choose your language",langIntro:"Select the language you want to use on NOVA AI."
+}
+};
+
+const $=s=>document.querySelector(s);
+let currentLang="fr";
+function setText(selector,value){const el=$(selector);if(el)el.innerHTML=value;}
+function applyLanguage(lang,persist=true){
+ currentLang=lang==="en"?"en":"fr";
+ const t=translations[currentLang];
+ document.documentElement.lang=currentLang;
+ document.title="NOVA AI — "+(currentLang==="fr"?"Votre univers numérique, propulsé par l'IA":"Your digital world, powered by AI");
+ [...nav.querySelectorAll('a')].forEach((a,i)=>a.textContent=t.nav[i]);
+ setText("#languageTitle",t.langTitle);setText("#languageIntro",t.langIntro);
+ setText('[data-i18n="start"]',t.start);
+ setText(".eyebrow",t.eyebrow);setText(".hero h1",t.heroTitle);setText(".lead",t.heroLead);
+ const heroBtns=$(".hero .actions").querySelectorAll("a");heroBtns[0].textContent=t.explore;heroBtns[1].textContent=t.discover;
+ setText("#features h2",t.featuresTitle);setText("#features .sub",t.featuresSub);
+ [...document.querySelectorAll(".card")].forEach((c,i)=>{c.querySelector("h3").textContent=t.featureTitles[i];c.querySelector("p").textContent=t.featureTexts[i];});
+ setText("#tools h2",t.toolsTitle);setText("#tools .section-head .sub",t.toolsSub);setText("#tools .tag",t.beta);
+ const boxes=$("#tools").querySelectorAll(".toolbox");
+ boxes[0].querySelector("h3").textContent=t.ideaTitle;boxes[0].querySelector("p").textContent=t.ideaSub;boxes[0].querySelector("label").textContent=t.topicLabel;
+ const options=$("#topic").options;
+ t.topics.forEach((label,i)=>options[i].textContent=label);
+ $("#generate").textContent=t.generate;
+ boxes[1].querySelector("h3").textContent=t.resultTitle;boxes[1].querySelector("p").textContent=t.resultSub;
+ if(!$("#result").dataset.generated)$("#result").textContent=t.resultDefault;
+ $("#tools .notice").textContent=t.demoNotice;
+ setText("#store h2",t.storeTitle);setText("#store .section-head .sub",t.storeSub);
+ [...document.querySelectorAll(".product")].forEach((p,i)=>{p.querySelector(".tag").textContent=t.productTags[i];p.querySelector("h3").textContent=t.productTitles[i];p.querySelector(".sub").textContent=t.productTexts[i];p.querySelector(".price").textContent=t.price;p.querySelector("button").textContent=t.soon;});
+ $("#store .notice").textContent=t.storeNotice;
+ setText("#premium .tag",t.premiumTag);setText("#premium h2",t.premiumTitle);$("#premium p").textContent=t.premiumText;$("#premium a").textContent=t.follow;
+ setText("#contact h2",t.contactTitle);$("#contact .section-head .sub").textContent=t.contactSub;$("#contact .toolbox p").textContent=t.contactText;$("#contact .toolbox a").textContent=t.backTop;
+ $("footer .foot div:first-child").innerHTML="<strong>NOVA AI</strong> · "+t.footerLine;$("footer .foot div:last-child").textContent=t.footerNote;
+ document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;if(t[key])el.textContent=t[key];});
+ $("#languageToggle").textContent=currentLang==="fr"?"FR / EN":"EN / FR";
+ if(persist){try{localStorage.setItem("nova-language",currentLang);}catch(e){}}
+}
+function showLanguagePicker(){ $("#languageDialog").classList.add("show"); }
+function hideLanguagePicker(){ $("#languageDialog").classList.remove("show"); }
+document.querySelectorAll("[data-language]").forEach(btn=>btn.addEventListener("click",()=>{
+ applyLanguage(btn.dataset.language);hideLanguagePicker();
+ if(!localStorage.getItem("nova-cookie-choice"))$("#cookieBanner").classList.add("show");
+}));
+$("#languageToggle").addEventListener("click",showLanguagePicker);
+
+const cookieChoiceKey="nova-cookie-choice";
+function saveCookieChoice(choice){try{localStorage.setItem(cookieChoiceKey,choice);}catch(e){}$("#cookieBanner").classList.remove("show");}
+$("#acceptCookies").addEventListener("click",()=>saveCookieChoice("accept"));
+$("#rejectCookies").addEventListener("click",()=>saveCookieChoice("reject"));
+$("#cookieDetails").addEventListener("click",()=>alert(translations[currentLang].cookieDetailMessage));
+try{
+ const savedLang=localStorage.getItem("nova-language");
+ const browserLang=(navigator.language||"fr").toLowerCase().startsWith("en")?"en":"fr";
+ if(savedLang){applyLanguage(savedLang,true);}else{applyLanguage(browserLang,false);showLanguagePicker();}
+ if(!localStorage.getItem(cookieChoiceKey)&&savedLang)$("#cookieBanner").classList.add("show");
+}catch(e){applyLanguage("fr");showLanguagePicker();}
+
+document.getElementById('generate').addEventListener('click',()=>{
+ const topicKeys=["Création de contenu","Études et apprentissage","Petite entreprise","Organisation personnelle","Sport et loisirs"];
+ const topic=topicKeys[document.getElementById('topic').selectedIndex];
+ const source=currentLang==="fr"?ideasFR:ideasEN;
+ const arr=source[topic]||ideasFR[topic];
+ const pick=arr[Math.floor(Math.random()*arr.length)];
+ const result=document.getElementById('result');
+ result.textContent=pick;result.dataset.generated="true";
+});
+</script>
+
+</body>
+</html>
